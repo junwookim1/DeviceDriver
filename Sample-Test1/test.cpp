@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 #include "../Project4/DeviceDriver.cpp"
-#include <vector>
+
 using namespace testing;
 
 class FlashMemoryDeviceMock : public FlashMemoryDevice
@@ -14,6 +14,5 @@ public:
 
 TEST(FlashMemoryDeviceTest, Test1)
 {
-	//EXPECT_CALL(db_mock, getDBName).WillRepeatedly(Return(string("TEST DOUBLE")));
 		
 }
