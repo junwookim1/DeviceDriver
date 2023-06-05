@@ -42,3 +42,21 @@ TEST(FlashMemoryDeviceTest, ReadTest3)
 	EXPECT_THROW(dd.read(0x1000), std::exception);
 
 }
+
+TEST(FlashMemoryDeviceTest, WriteTest1)
+{
+	FlashMemoryDeviceMock device_mock;
+	DeviceDriver dd(&device_mock);
+	EXPECT_CALL(device_mock, read(0x1000)).WillRepeatedly(Return(0xFF));
+
+	dd.write(0x1000, 1);
+}
+
+TEST(FlashMemoryDeviceTest, WriteTest2)
+{
+	FlashMemoryDeviceMock device_mock;
+	DeviceDriver dd(&device_mock);
+	EXPECT_CALL(device_mock, read(0x1000)).WillRepeatedly(Return(0x0));
+
+	EXPECT_THROW(dd.write(0x1000, 1), std::exception);
+}
